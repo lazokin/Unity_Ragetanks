@@ -49,6 +49,8 @@ public class PlayerStateListener : MonoBehaviour
 
     private void OnStateChange(PlayerStateController.playerStates newState)
     {
+        Vector3 localScale = transform.localScale;
+
         if (newState == currentState)
         {
             return;
@@ -67,12 +69,25 @@ public class PlayerStateListener : MonoBehaviour
         switch (newState)
         {
             case PlayerStateController.playerStates.idle:
+                playerAnimator.SetBool("Walking", false);
                 break;
 
             case PlayerStateController.playerStates.left:
+                playerAnimator.SetBool("Walking", true);
+                if (localScale.x > 0.0f)
+                {
+                    localScale.x *= -1.0f;
+                    transform.localScale = localScale;
+                }
                 break;
 
             case PlayerStateController.playerStates.right:
+                playerAnimator.SetBool("Walking", true);
+                if (localScale.x < 0.0f)
+                {
+                    localScale.x *= -1.0f;
+                    transform.localScale = localScale;
+                }
                 break;
         }
 

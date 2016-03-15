@@ -31,7 +31,7 @@ public class PlayerStateController : MonoBehaviour
                     StateChange(PlayerStateController.playerStates.left);
                 }
             }
-            else
+            if (horizontal > 0f)
             {
                 if (StateChange != null)
                 {
