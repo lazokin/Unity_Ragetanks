@@ -10,24 +10,29 @@ public class PlayerStateListener : MonoBehaviour
     private Animator playerAnimator = null;
     private PlayerStateController.playerStates currentState = PlayerStateController.playerStates.idle;
 
-    void OnEnable()
+    public void OnEnable()
     {
         PlayerStateController.StateChange += OnStateChange;
     }
 
-    void OnDisable()
+    public void OnDisable()
     {
         PlayerStateController.StateChange -= OnStateChange;
     }
 
-    void Start()
+    public void Start()
     {
         playerAnimator = GetComponent<Animator>();
     }
 
-    void LateUpdate()
+    public void LateUpdate()
     {
         OnStateCycle();
+    }
+
+    public void hitDeathTrigger()
+    {
+        OnStateChange(PlayerStateController.playerStates.kill);
     }
 
     private void OnStateCycle()
@@ -43,6 +48,12 @@ public class PlayerStateListener : MonoBehaviour
 
             case PlayerStateController.playerStates.right:
                 transform.Translate(new Vector3((playerWalkSpeed * 1.0f) * Time.deltaTime, 0.0f, 0.0f));
+                break;
+
+            case PlayerStateController.playerStates.kill:
+                break;
+
+            case PlayerStateController.playerStates.resurrect:
                 break;
         }
     }
@@ -89,6 +100,12 @@ public class PlayerStateListener : MonoBehaviour
                     transform.localScale = localScale;
                 }
                 break;
+
+            case PlayerStateController.playerStates.kill:
+                break;
+
+            case PlayerStateController.playerStates.resurrect:
+                break;
         }
 
         currentState = newState;
@@ -114,6 +131,20 @@ public class PlayerStateListener : MonoBehaviour
 
             case PlayerStateController.playerStates.right:
                 result = true;
+                break;
+
+            case PlayerStateController.playerStates.kill:
+                if (newState == PlayerStateController.playerStates.resurrect)
+                {
+                    result = true;
+                }
+                break;
+
+            case PlayerStateController.playerStates.resurrect:
+                if (newState == PlayerStateController.playerStates.idle)
+                {
+                    result = true;
+                }
                 break;
         }
         return result;
