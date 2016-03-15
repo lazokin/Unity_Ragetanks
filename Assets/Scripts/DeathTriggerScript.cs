@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DeathTriggerScript : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+public class DeathTriggerScript : MonoBehaviour
+{
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.SendMessage("hitDeathTrigger");
+    }
 }

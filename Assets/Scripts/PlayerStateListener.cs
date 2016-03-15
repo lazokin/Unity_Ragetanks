@@ -6,6 +6,7 @@ using System;
 public class PlayerStateListener : MonoBehaviour
 {
     public float playerWalkSpeed = 3f;
+    public GameObject playerRespawnPoint = null;
 
     private Animator playerAnimator = null;
     private PlayerStateController.playerStates currentState = PlayerStateController.playerStates.idle;
@@ -51,9 +52,11 @@ public class PlayerStateListener : MonoBehaviour
                 break;
 
             case PlayerStateController.playerStates.kill:
+                OnStateChange(PlayerStateController.playerStates.resurrect);
                 break;
 
             case PlayerStateController.playerStates.resurrect:
+                OnStateChange(PlayerStateController.playerStates.idle);
                 break;
         }
     }
@@ -105,6 +108,9 @@ public class PlayerStateListener : MonoBehaviour
                 break;
 
             case PlayerStateController.playerStates.resurrect:
+                transform.position = playerRespawnPoint.transform.position;
+                transform.rotation = Quaternion.identity;
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 break;
         }
 
