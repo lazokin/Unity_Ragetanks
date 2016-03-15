@@ -116,31 +116,31 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -0.765, y: 0.815}
-      - {x: -0.195, y: 0.895}
-      - {x: 0.195, y: 0.895}
-      - {x: 0.575, y: 0.85499996}
-      - {x: 1.055, y: 0.72499996}
-      - {x: 1.305, y: 0.585}
-      - {x: 1.305, y: -1.105}
-      - {x: 1.515, y: -1.105}
-      - {x: 1.515, y: 0.585}
-      - {x: 1.525, y: 0.585}
-      - {x: 1.645, y: 0.825}
-      - {x: 1.8549999, y: 1.005}
-      - {x: 1.985, y: 1.0649999}
-      - {x: 1.985, y: 1.105}
-      - {x: -1.985, y: 1.105}
-      - {x: -1.985, y: 1.0649999}
-      - {x: -1.765, y: 0.935}
-      - {x: -1.615, y: 0.775}
-      - {x: -1.525, y: 0.60499996}
-      - {x: -1.525, y: -1.095}
-      - {x: -1.515, y: -1.105}
-      - {x: -1.305, y: -1.105}
-      - {x: -1.295, y: -1.095}
-      - {x: -1.295, y: 0.59499997}
-      - {x: -0.905, y: 0.775}
+    - - {x: -0.765, y: -0.29}
+      - {x: -0.195, y: -0.21}
+      - {x: 0.195, y: -0.21}
+      - {x: 0.575, y: -0.25}
+      - {x: 1.055, y: -0.38}
+      - {x: 1.305, y: -0.52}
+      - {x: 1.305, y: -2.21}
+      - {x: 1.515, y: -2.21}
+      - {x: 1.515, y: -0.52}
+      - {x: 1.525, y: -0.52}
+      - {x: 1.645, y: -0.28}
+      - {x: 1.8549999, y: -0.099999994}
+      - {x: 1.985, y: -0.04}
+      - {x: 1.985, y: 0}
+      - {x: -1.985, y: 0}
+      - {x: -1.985, y: -0.04}
+      - {x: -1.765, y: -0.17}
+      - {x: -1.615, y: -0.32999998}
+      - {x: -1.525, y: -0.5}
+      - {x: -1.525, y: -2.2}
+      - {x: -1.515, y: -2.21}
+      - {x: -1.305, y: -2.21}
+      - {x: -1.295, y: -2.2}
+      - {x: -1.295, y: -0.51}
+      - {x: -0.905, y: -0.32999998}
 --- !u!212 &225242003
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -192,6 +192,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 635970073}
   - 212: {fileID: 635970072}
+  - 61: {fileID: 635970078}
+  - 50: {fileID: 635970077}
   - 95: {fileID: 635970074}
   - 114: {fileID: 635970076}
   - 114: {fileID: 635970075}
@@ -284,6 +286,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3b6f65804ae754cb088b62d9ec0917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &635970077
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 635970071}
+  m_UseAutoMass: 0
+  m_Mass: 0.7056
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!61 &635970078
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 635970071}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 1}
+  serializedVersion: 2
+  m_Size: {x: 0.72, y: 2}
 --- !u!1 &775068504
 GameObject:
   m_ObjectHideFlags: 0
