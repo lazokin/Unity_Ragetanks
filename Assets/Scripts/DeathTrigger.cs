@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DeathTriggerScript : MonoBehaviour
+public class DeathTrigger : MonoBehaviour
 {
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.SendMessage("hitDeathTrigger");
+        collision.SendMessage("hitDeathTrigger", SendMessageOptions.DontRequireReceiver);
     }
 }
