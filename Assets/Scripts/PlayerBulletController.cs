@@ -6,6 +6,8 @@ public class PlayerBulletController : MonoBehaviour
     public GameObject playerObject = null;
     public float bulletSpeed = 15.0f;
 
+    private float selfDestructTime = 0.0f;
+
     public void launchBullet()
     {
         float mainXScale = playerObject.transform.localScale.x;
@@ -18,7 +20,19 @@ public class PlayerBulletController : MonoBehaviour
         {
             bulletVelocity = new Vector2(+bulletSpeed, 0.0f);
         }
-        GetComponent<Rigidbody2D>().velocity = bulletVelocity; 
+        GetComponent<Rigidbody2D>().velocity = bulletVelocity;
+        selfDestructTime = Time.time + 1.0f;
+    }
+
+    public void Update()
+    {
+        if (selfDestructTime > 0.0f)
+        {
+            if (Time.time > selfDestructTime)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
 }
