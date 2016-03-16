@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - DeathTrigger
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

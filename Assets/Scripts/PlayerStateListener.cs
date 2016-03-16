@@ -9,9 +9,12 @@ public class PlayerStateListener : MonoBehaviour
     public float playerJumpForceVertical = 500;
     public float playerJumpForceHorizontal = 250;
     public GameObject playerRespawnPoint = null;
+    public GameObject bulletPrefab = null;
+    public Transform bulletSpawnPoint;
 
     private Animator playerAnimator = null;
     private PlayerStateController.playerStates currentState = PlayerStateController.playerStates.idle;
+    private PlayerStateController.playerStates previousState = PlayerStateController.playerStates.idle;
     private bool playerHasLanded = true;
 
     public void OnEnable()
@@ -28,6 +31,7 @@ public class PlayerStateListener : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         PlayerStateController.stateDelayTimer[(int)PlayerStateController.playerStates.jump] = 1.0f;
+        PlayerStateController.stateDelayTimer[(int)PlayerStateController.playerStates.firingWeapon] = 1.0f;
     }
 
     public void LateUpdate()
@@ -70,6 +74,9 @@ public class PlayerStateListener : MonoBehaviour
 
             case PlayerStateController.playerStates.resurrect:
                 OnStateChange(PlayerStateController.playerStates.idle);
+                break;
+
+            case PlayerStateController.playerStates.firingWeapon:
                 break;
         }
     }
@@ -153,8 +160,19 @@ public class PlayerStateListener : MonoBehaviour
                 transform.rotation = Quaternion.identity;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 break;
+
+            case PlayerStateController.playerStates.firingWeapon:
+                GameObject newBullet = (GameObject)Instantiate(bulletPrefab);
+                newBullet.transform.position = bulletSpawnPoint.position;
+                PlayerBulletController bullCon = newBullet.GetComponent<PlayerBulletController>();
+                bullCon.playerObject = gameObject;
+                bullCon.launchBullet();
+                OnStateChange(currentState);
+                PlayerStateController.stateDelayTimer[(int)PlayerStateController.playerStates.firingWeapon] = Time.time + 0.25f;
+                break;
         }
 
+        previousState = currentState;
         currentState = newState;
     }
 
@@ -193,6 +211,11 @@ public class PlayerStateListener : MonoBehaviour
                 break;
 
             case PlayerStateController.playerStates.firingWeapon:
+                float nextAllowedFireTime = PlayerStateController.stateDelayTimer[(int)PlayerStateController.playerStates.firingWeapon];
+                if (nextAllowedFireTime > Time.time)
+                {
+                    result = true;
+                }
                 break;
         }
         return result;
@@ -227,7 +250,8 @@ public class PlayerStateListener : MonoBehaviour
             case PlayerStateController.playerStates.landing:
                 if (newState == PlayerStateController.playerStates.left ||
                     newState == PlayerStateController.playerStates.right ||
-                    newState == PlayerStateController.playerStates.idle)
+                    newState == PlayerStateController.playerStates.idle ||
+                    newState == PlayerStateController.playerStates.firingWeapon)
                 {
                     result = true;
                 }
@@ -236,7 +260,8 @@ public class PlayerStateListener : MonoBehaviour
             case PlayerStateController.playerStates.falling:
                 if (newState == PlayerStateController.playerStates.left ||
                     newState == PlayerStateController.playerStates.right ||
-                    newState == PlayerStateController.playerStates.idle)
+                    newState == PlayerStateController.playerStates.idle ||
+                    newState == PlayerStateController.playerStates.firingWeapon)
                 {
                     result = true;
                 }
@@ -254,6 +279,10 @@ public class PlayerStateListener : MonoBehaviour
                 {
                     result = true;
                 }
+                break;
+
+            case PlayerStateController.playerStates.firingWeapon:
+                result = true;
                 break;
         }
         return result;
