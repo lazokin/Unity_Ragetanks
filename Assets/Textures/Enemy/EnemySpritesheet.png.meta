@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: a1964a21393569f46a60b3ffe5666621
+timeCreated: 1458162268
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: EnemyWalk_1
+    21300002: EnemyWalk_2
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: EnemyWalk_1
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 68
+        width: 456
+        height: 361
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 217, y: 99}
+        - {x: -228, y: 99}
+        - {x: -228, y: 0}
+        - {x: 223, y: 0}
+        - {x: 228, y: 31}
+        - {x: 228, y: 67}
+      - - {x: 164, y: 183}
+        - {x: 146, y: 212}
+        - {x: 101, y: 250}
+        - {x: 65, y: 265}
+        - {x: 37, y: 272}
+        - {x: 10, y: 278}
+        - {x: 9, y: 307}
+        - {x: 24, y: 319}
+        - {x: 29, y: 325}
+        - {x: 25, y: 351}
+        - {x: 16, y: 361}
+        - {x: -19, y: 361}
+        - {x: -29, y: 347}
+        - {x: -28, y: 325}
+        - {x: -17, y: 310}
+        - {x: -14, y: 278}
+        - {x: -44, y: 270}
+        - {x: -75, y: 261}
+        - {x: -113, y: 240}
+        - {x: -142, y: 211}
+        - {x: -157, y: 190}
+        - {x: -172, y: 156}
+        - {x: -176, y: 139}
+        - {x: -176, y: 106}
+        - {x: -174, y: 105}
+        - {x: 177, y: 105}
+        - {x: 179, y: 106}
+        - {x: 179, y: 148}
+    - name: EnemyWalk_2
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 68
+        width: 456
+        height: 361
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 217, y: 99}
+        - {x: -228, y: 99}
+        - {x: -228, y: 0}
+        - {x: 223, y: 0}
+        - {x: 228, y: 31}
+        - {x: 228, y: 67}
+      - - {x: 164, y: 183}
+        - {x: 146, y: 212}
+        - {x: 101, y: 250}
+        - {x: 65, y: 265}
+        - {x: 37, y: 272}
+        - {x: 10, y: 278}
+        - {x: 9, y: 307}
+        - {x: 24, y: 319}
+        - {x: 29, y: 325}
+        - {x: 25, y: 351}
+        - {x: 16, y: 361}
+        - {x: -19, y: 361}
+        - {x: -29, y: 347}
+        - {x: -28, y: 325}
+        - {x: -17, y: 310}
+        - {x: -14, y: 278}
+        - {x: -44, y: 270}
+        - {x: -75, y: 261}
+        - {x: -113, y: 240}
+        - {x: -142, y: 211}
+        - {x: -157, y: 190}
+        - {x: -172, y: 156}
+        - {x: -176, y: 139}
+        - {x: -176, y: 106}
+        - {x: -174, y: 105}
+        - {x: 177, y: 105}
+        - {x: 179, y: 106}
+        - {x: 179, y: 148}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
