@@ -358,8 +358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerWalkSpeed: 3
-  playerJumpForceVertical: 500
-  playerJumpForceHorizontal: 250
+  playerJumpForceVertical: 250
+  playerJumpForceHorizontal: 125
   playerRespawnPoint: {fileID: 5376264}
 --- !u!114 &635970076
 MonoBehaviour:
@@ -513,10 +513,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 945314363}
   - 61: {fileID: 945314362}
-  - 114: {fileID: 945314364}
   m_Layer: 0
   m_Name: Death Trigger
-  m_TagString: Untagged
+  m_TagString: DeathTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547,14 +546,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!114 &945314364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 945314361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306c5fc341e83b54f9e354c29324659b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

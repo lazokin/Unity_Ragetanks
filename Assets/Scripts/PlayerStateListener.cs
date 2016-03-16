@@ -27,6 +27,7 @@ public class PlayerStateListener : MonoBehaviour
     public void Start()
     {
         playerAnimator = GetComponent<Animator>();
+        PlayerStateController.stateDelayTimer[(int)PlayerStateController.playerStates.jump] = 1.0f;
     }
 
     public void LateUpdate()
@@ -137,9 +138,11 @@ public class PlayerStateListener : MonoBehaviour
 
             case PlayerStateController.playerStates.landing:
                 playerHasLanded = true;
+                PlayerStateController.stateDelayTimer[(int)PlayerStateController.playerStates.jump] = Time.time + 0.1f;
                 break;
 
             case PlayerStateController.playerStates.falling:
+                PlayerStateController.stateDelayTimer[(int)PlayerStateController.playerStates.jump] = 0f;
                 break;
 
             case PlayerStateController.playerStates.kill:
@@ -170,6 +173,11 @@ public class PlayerStateListener : MonoBehaviour
                 break;
 
             case PlayerStateController.playerStates.jump:
+                float nextAllowedJumpTime = PlayerStateController.stateDelayTimer[(int)PlayerStateController.playerStates.jump];
+                if (nextAllowedJumpTime == 0.0f || nextAllowedJumpTime > Time.time)
+                {
+                    result = true;
+                }
                 break;
 
             case PlayerStateController.playerStates.landing:
