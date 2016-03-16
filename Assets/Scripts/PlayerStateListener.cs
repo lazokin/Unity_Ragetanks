@@ -57,6 +57,12 @@ public class PlayerStateListener : MonoBehaviour
             case PlayerStateController.playerStates.jump:
                 break;
 
+            case PlayerStateController.playerStates.landing:
+                break;
+
+            case PlayerStateController.playerStates.falling:
+                break;
+
             case PlayerStateController.playerStates.kill:
                 OnStateChange(PlayerStateController.playerStates.resurrect);
                 break;
@@ -67,7 +73,7 @@ public class PlayerStateListener : MonoBehaviour
         }
     }
 
-    private void OnStateChange(PlayerStateController.playerStates newState)
+    public void OnStateChange(PlayerStateController.playerStates newState)
     {
         Vector3 localScale = transform.localScale;
 
@@ -129,6 +135,13 @@ public class PlayerStateListener : MonoBehaviour
                 }
                 break;
 
+            case PlayerStateController.playerStates.landing:
+                playerHasLanded = true;
+                break;
+
+            case PlayerStateController.playerStates.falling:
+                break;
+
             case PlayerStateController.playerStates.kill:
                 break;
 
@@ -144,7 +157,37 @@ public class PlayerStateListener : MonoBehaviour
 
     private bool StateTransitionAbort(PlayerStateController.playerStates newState)
     {
-        return false;
+        bool result = false;
+        switch (newState)
+        {
+            case PlayerStateController.playerStates.idle:
+                break;
+
+            case PlayerStateController.playerStates.left:
+                break;
+
+            case PlayerStateController.playerStates.right:
+                break;
+
+            case PlayerStateController.playerStates.jump:
+                break;
+
+            case PlayerStateController.playerStates.landing:
+                break;
+
+            case PlayerStateController.playerStates.falling:
+                break;
+
+            case PlayerStateController.playerStates.kill:
+                break;
+
+            case PlayerStateController.playerStates.resurrect:
+                break;
+
+            case PlayerStateController.playerStates.firingWeapon:
+                break;
+        }
+        return result;
     }
 
     private bool StateTransitionValid(PlayerStateController.playerStates newState)
@@ -165,9 +208,27 @@ public class PlayerStateListener : MonoBehaviour
                 break;
 
             case PlayerStateController.playerStates.jump:
-                if (newState == PlayerStateController.playerStates.landing
-                    || newState == PlayerStateController.playerStates.kill
-                    || newState == PlayerStateController.playerStates.firingWeapon)
+                if (newState == PlayerStateController.playerStates.landing ||
+                    newState == PlayerStateController.playerStates.kill ||
+                    newState == PlayerStateController.playerStates.firingWeapon)
+                {
+                    result = true;
+                }
+                break;
+
+            case PlayerStateController.playerStates.landing:
+                if (newState == PlayerStateController.playerStates.left ||
+                    newState == PlayerStateController.playerStates.right ||
+                    newState == PlayerStateController.playerStates.idle)
+                {
+                    result = true;
+                }
+                break;
+
+            case PlayerStateController.playerStates.falling:
+                if (newState == PlayerStateController.playerStates.left ||
+                    newState == PlayerStateController.playerStates.right ||
+                    newState == PlayerStateController.playerStates.idle)
                 {
                     result = true;
                 }
