@@ -6,10 +6,13 @@ using System;
 public class PlayerStateListener : MonoBehaviour
 {
     public float playerWalkSpeed = 3f;
+    public float playerJumpForceVertical = 500;
+    public float playerJumpForceHorizontal = 250;
     public GameObject playerRespawnPoint = null;
 
     private Animator playerAnimator = null;
     private PlayerStateController.playerStates currentState = PlayerStateController.playerStates.idle;
+    private bool playerHasLanded = true;
 
     public void OnEnable()
     {
@@ -49,6 +52,9 @@ public class PlayerStateListener : MonoBehaviour
 
             case PlayerStateController.playerStates.right:
                 transform.Translate(new Vector3((playerWalkSpeed * 1.0f) * Time.deltaTime, 0.0f, 0.0f));
+                break;
+
+            case PlayerStateController.playerStates.jump:
                 break;
 
             case PlayerStateController.playerStates.kill:
@@ -104,6 +110,25 @@ public class PlayerStateListener : MonoBehaviour
                 }
                 break;
 
+            case PlayerStateController.playerStates.jump:
+                if (playerHasLanded)
+                {
+                    float jumpDirection = 0.0f;
+                    if (currentState == PlayerStateController.playerStates.left)
+                    {
+                        jumpDirection = -1.0f;
+                    }
+                    if (currentState == PlayerStateController.playerStates.right)
+                    {
+                        jumpDirection = +1.0f;
+                    }
+                    GetComponent<Rigidbody2D>().AddForce(
+                        new Vector2(jumpDirection * playerJumpForceHorizontal, playerJumpForceVertical));
+                    playerHasLanded = false;
+                    PlayerStateController.stateDelayTimer[(int)PlayerStateController.playerStates.jump] = 0f;
+                }
+                break;
+
             case PlayerStateController.playerStates.kill:
                 break;
 
@@ -137,6 +162,15 @@ public class PlayerStateListener : MonoBehaviour
 
             case PlayerStateController.playerStates.right:
                 result = true;
+                break;
+
+            case PlayerStateController.playerStates.jump:
+                if (newState == PlayerStateController.playerStates.landing
+                    || newState == PlayerStateController.playerStates.kill
+                    || newState == PlayerStateController.playerStates.firingWeapon)
+                {
+                    result = true;
+                }
                 break;
 
             case PlayerStateController.playerStates.kill:
