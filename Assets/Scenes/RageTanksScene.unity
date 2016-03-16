@@ -649,6 +649,7 @@ GameObject:
   - 4: {fileID: 1255447196}
   - 61: {fileID: 1255447197}
   - 114: {fileID: 1255447198}
+  - 114: {fileID: 1255447199}
   m_Layer: 0
   m_Name: Defense Collider
   m_TagString: Untagged
@@ -691,6 +692,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306c5fc341e83b54f9e354c29324659b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1255447199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1255447195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f27bb102ffe3c5459d72a2d390b2a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1646513521
@@ -1011,6 +1023,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkingSpeed: 0.45
+  takeDamageFromPlayerBullet: {fileID: 1255447199}
+  deathParticleSystemPrefab: {fileID: 178134, guid: 3818d16da4b2834488f407e8710cd90c,
+    type: 2}
 --- !u!1001 &2108075078
 Prefab:
   m_ObjectHideFlags: 0

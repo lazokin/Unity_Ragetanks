@@ -5,7 +5,19 @@ using System;
 public class EnemyController : MonoBehaviour
 {
     public float walkingSpeed = 0.45f;
+    public TakeDamageFromPlayerBullet takeDamageFromPlayerBullet = null;
+    public GameObject deathParticleSystemPrefab = null;
     private bool walkingLeft = true;
+
+    public void OnEnable()
+    {
+        takeDamageFromPlayerBullet.HitByPlayerBullet += OnHitByPlayerBullet;
+    }
+
+    public void OnDisable()
+    {
+        takeDamageFromPlayerBullet.HitByPlayerBullet -= OnHitByPlayerBullet;
+    }
 
     public void Start()
     {
@@ -50,5 +62,14 @@ public class EnemyController : MonoBehaviour
                 transform.localScale = localScale;
             }
         }
+    }
+
+    private void OnHitByPlayerBullet()
+    {
+        GameObject deathParticle = (GameObject)Instantiate(deathParticleSystemPrefab);
+        Vector3 enemyPos = transform.position;
+        Vector3 particlePos = new Vector3(enemyPos.x, enemyPos.y, enemyPos.z + 1.0f);
+        deathParticle.transform.position = particlePos;
+        Destroy(gameObject, 0.1f);
     }
 }
