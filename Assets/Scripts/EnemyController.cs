@@ -9,6 +9,9 @@ public class EnemyController : MonoBehaviour
     public GameObject deathParticleSystemPrefab = null;
     private bool walkingLeft = true;
 
+    public delegate void enemyEventHandler(int scoreMod);
+    public static event enemyEventHandler enemyDied;
+
     public void OnEnable()
     {
         takeDamageFromPlayerBullet.HitByPlayerBullet += OnHitByPlayerBullet;
@@ -70,6 +73,10 @@ public class EnemyController : MonoBehaviour
         Vector3 enemyPos = transform.position;
         Vector3 particlePos = new Vector3(enemyPos.x, enemyPos.y, enemyPos.z + 1.0f);
         deathParticle.transform.position = particlePos;
+        if (enemyDied != null)
+        {
+            enemyDied(25);
+        }
         Destroy(gameObject, 0.1f);
     }
 }
