@@ -11,6 +11,7 @@ GameObject:
   - 198: {fileID: 19875772}
   - 199: {fileID: 19971310}
   - 114: {fileID: 11417560}
+  - 114: {fileID: 11436130}
   m_Layer: 0
   m_Name: EnemyDeathFX
   m_TagString: Untagged
@@ -42,6 +43,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuseLength: 1.25
+--- !u!114 &11436130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce151d5879feca244b227d8f76d8e1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortLayerString: ParticleLayer
 --- !u!198 &19875772
 ParticleSystem:
   m_ObjectHideFlags: 1
